@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.menu_lateral {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: #4e73df;
+    margin-top: 56px;
+    overflow: hidden;
+}
+
+.menu_lateral ul {
+    
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.menu_lateral ul:hover {
+    overflow: auto;
+}
+
+.menu_lateral.active {
+    left: -200px;
+    transition: all 1000ms linear;
+}
+
+.menu_lateral ul li {
+    padding: 12px 8px;
+    list-style: none;
+    color: white;
+    cursor: pointer;
+}
+
+.menu_lateral .button_handler {
+    position: absolute;
+    left: 230px;
+    top: 20px;
+    cursor: pointer;
+}
+
+.menu_lateral .button_handler span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background: Black;
+    margin: 3px 0px;
+}
+
+.corpo {
+    margin-left: 200px;
+}
+
+
+/* Formulario ClienteSignUp       */
+
+.formbody {
+    /* position: fixed; */
+    margin-top: 3%;
+    margin-left: 5%;
+    width: 90%;
+    /*height: 55%;*/
+    box-sizing: border-box;
+    background: #f8f9fa;
+    /* background: rgba(0, 0, 0, 0.5); */
+    border-radius: 5px;
+}
+
+.formbody form {
+    margin-left: 5%;
+    width: 90%;
+    /*height: 55%;*/
+}
+
+.formbody h2 {
+    margin-left: 15%;
+    width: 60%;
+    /*height: 55%;*/
+}
+
+
+/* Formulario ClienteSignUp       */

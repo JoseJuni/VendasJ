@@ -1,0 +1,209 @@
+body {
+	margin : 0 auto;
+	padding: 0;
+	/*background-color:grey;*/
+		background-size: cover;
+  background-image: url("../img/back.jpg");
+    background-repeat:no-repeat;
+    background-color: #d6d6c2;
+
+}
+
+#corpo {
+	margin : 0 auto;
+	padding: 0;
+	background-size: cover;
+	/*background-color:grey;*/
+  background-image: url("../img/back1.jpg");
+    background-repeat:no-repeat;
+    background-color: #d6d6c2;
+
+}
+
+.log{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 40%;
+	height: 55%;
+	box-sizing: border-box;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 5px;
+
+}
+
+.userimg{
+width: 20%;
+height: 30%;
+border-radius: 50%;
+overflow: hidden;
+position: absolute;
+top: calc(-100px/2);
+left: calc(50% - 11%);
+}
+
+div {
+	background-image : url('image.jpeg');
+	background-repeat : no-repeat;
+	border-radius: 5px;
+	background-color: white;
+	padding: 40px;
+
+}
+
+h2{
+	margin: 0;
+	padding: 0 0 20px;
+	text-align: center;
+}
+
+
+
+.log input[type="text"],
+.log input[type="password"]
+{
+	border: none;
+	border-bottom: 2px solid #fff;
+	/* border-top: 2px solid #fff;
+	border-left: 2px solid #fff;
+	border-right: 2px solid #fff; */
+	background-color: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	padding: 2px;
+	width: 76%;
+	/* padding: 12px 20px; */
+	margin: 0 12%;
+}
+
+.log input[type="submit"]
+{
+	background: rgba(40, 40, 40, 0.5);
+	width: 76%;
+	/* padding: 12px 20px; */
+	margin: 0 12%;
+}
+
+
+
+
+::placeholder{
+	color: rgba(255, 255, 255, 0.5);
+}
+
+label{
+	color :  Black;
+	text-align: center;
+	margin: 0 14%;
+	font-family: serif;
+	font-weight: bold;
+	color: white;
+}
+
+.log input[type="submit"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #001b00;
+	color: #fff;
+	width: 76%;
+	/* padding: 12px 20px; */
+	margin: 0 12%;
+}
+
+.log input[type="checkbox"]
+{
+
+	/* padding: 12px 20px; */
+	margin: 0 3%;
+}
+
+.log input[type="submit"]:hover
+{
+
+	background-color: #003300;
+	color: #fff9;
+}
+
+.log button{
+	border: none;
+	outline: none;
+	height: 40px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #001a00;
+	color: #fff;
+}
+
+.log button:hover
+{
+	background-color: #003300;
+	color: #fff9;
+}
+/* input[type=text]:focus, select:focus, input[type=date]:focus, [type=number]:focus , [type=password]:focus {
+	background-color: lightblue;
+}
+
+input[type=submit], input[type=reset]{
+	align: center;
+	width: 32%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+} */
+
+
+/* #formulario{
+	width: 30%;
+	left: 200px;
+	padding: 1% 8%;
+	display: block;
+	box-shadow: 5px 5px 15px  rgba(41,39,30,.5);
+	margin-left: 25%;
+	border-radius: 3px;
+	margin-top: 15%;
+	background-color: #fff;
+} */
+
+#grad {
+	background: red; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(aqua, cyan, blue); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(blue, cyan, darkblue); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(red, yellow, green); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(blue, cyan, darkblue); /* Standard syntax }
+
+
+
+a:link {
+    color: #FF0000;
+}
+
+/* visited link */
+a:visited {
+    color: #00FF00;
+}
+
+/* mouse over link */
+a:hover {
+    color: #FF00FF;
+}
+
+/* selected link */
+a:active {
+    color: #0000FF;
+}
