@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>VendasJ Dashboard</title>
+    <title>@yield('title')</title>
     <link rel="apple-touch-icon" sizes="60x60" href={{ asset("assets/images/ico/apple-icon-60.png")}}>
     <link rel="apple-touch-icon" sizes="76x76" href={{ asset("assets/images/ico/apple-icon-76.png")}}>
     <link rel="apple-touch-icon" sizes="120x120" href={{ asset("assets/images/ico/apple-icon-120.png")}}>
@@ -149,9 +149,11 @@
                   <li class="dropdown-menu-footer"><a href="javascript:void(0)" class="dropdown-item text-muted text-xs-center">Read all messages</a></li>
                 </ul>
               </li>
-              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src={{ asset("assets/images/portrait/small/avatar-s-1.png")}} alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
-                <div class="dropdown-menu dropdown-menu-right"><a href="#" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a><a href="#" class="dropdown-item"><i class="icon-clipboard2"></i> Tasks</a>
-                  <div class="dropdown-divider"></div><a href="#" class="dropdown-item"><i class="icon-power3"></i> Logout</a>
+              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src={{ asset("assets/images/portrait/small/avatar-s-1.png")}} alt="avatar"><i></i></span><span class="user-name"> {{ Auth::user()->name }}</span></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item"><i class="icon-head"></i> Perfil</a>
+                        <a href="#" class="dropdown-item"><i class="icon-clipboard2"></i> Tasks</a>
+                        <div class="dropdown-divider"></div><a href="{{ route('logout') }}" class="dropdown-item"><i class="icon-power3"></i> Logout</a>
                 </div>
               </li>
             </ul>
@@ -173,11 +175,11 @@
       <!-- main menu content-->
       <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-          <li class=" nav-item"><a href="index.html"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Dashboard</span></a>
+        <li class=" nav-item"><a href="{{route('home')}}"><i class="icon-home3"></i><span data-i18n="nav.dash.main" class="menu-title">Dashboard</span></a>
 
           <!-- Cliente Space -->
           </li>
-          <li class=" nav-item"><a href="#"><i class="icon-users"></i><span data-i18n="nav.page_layouts.main" class="menu-title">
+        <li class=" nav-item"><a href="{{route('admin.cliente')}}"><i class="icon-users"></i><span data-i18n="nav.page_layouts.main" class="menu-title">
             Clientes
           </span></a>
           </li>
@@ -190,7 +192,7 @@
             <ul class="menu-content">
               <li><a href="invoice-template.html" data-i18n="nav.invoice.invoice_template" class="menu-item"><i class="icon-plus"></i>Adicionar</a>
               </li>
-              <li><a href="gallery-grid.html" data-i18n="nav.gallery_pages.gallery_grid" class="menu-item"><i class="icon-list"></i>Listar</a>
+                <li><a href="{{route("admin.entrada")}}" data-i18n="nav.gallery_pages.gallery_grid" class="menu-item"><i class="icon-list"></i>Listar</a>
               </li>
             </ul>
           </li>
@@ -219,9 +221,9 @@
             Vendas
           </span></a>
             <ul class="menu-content">
-              <li><a href="invoice-template.html" data-i18n="nav.invoice.invoice_template" class="menu-item">Adicionar</a>
+                <li><a href="{{route('venda.create')}}" data-i18n="nav.invoice.invoice_template" class="menu-item">Adicionar</a>
               </li>
-              <li><a href="gallery-grid.html" data-i18n="nav.gallery_pages.gallery_grid" class="menu-item">Listar</a>
+              <li><a href="{{route('admin.venda')}} data-i18n="nav.gallery_pages.gallery_grid" class="menu-item">Listar</a>
               </li>
             </ul>
           </li>
@@ -313,6 +315,13 @@
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src={{ asset("assets/js/scripts/pages/dashboard-lite.js")}} type="text/javascript"></script>
+
+    <Script>
+        function getdate(){
+            var time = date.year;
+            return time;
+        }
+    </Script>
     <!-- END PAGE LEVEL JS-->
   </body>
 </html>

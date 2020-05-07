@@ -18,7 +18,7 @@ class Produto extends Model
         'preco',
         'quantidade',
         'preco',
-        'data_validade'
+        'marca'
     ];
 
     public $regras = [

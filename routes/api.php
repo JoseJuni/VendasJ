@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/*Route::get('estudantes', 'vendasj\EstudanteController@index');
+Route::get('estudantes', 'vendasj\EstudanteController@index');
 Route::get('estudantes/{id}', 'vendasj\EstudanteController@show');
-Route::post('estudante/cadastrar', 'vendasj\EstudanteController@store');*/
+Route::post('estudante/cadastrar', 'vendasj\EstudanteController@store');
 

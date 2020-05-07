@@ -1,6 +1,6 @@
 @extends('templates.page')
 
-@section('title', 'Cadastro de cliente')
+@section('title', 'Cadastro de Produto')
 
 
 @section('header')
@@ -27,6 +27,32 @@
         </div>
     @endif
 
+    <!-- Confirnacao de delete -->
+    <div class='modal fade' id='category' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+        <div class='modal-dialog' role='form'>
+        <div class='modal-content modal-body'>
+        <div class='modal-header'>
+            <h5 class='modal-title' id='exampleModalLabel'>Adicionar Categoria de Produto</h5>
+            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+            <span aria-hidden='true'>&times;</span>
+            </button>
+        </div>
+        <!--Corpo  -->
+            <form action="{{route('produto.category')}}" class="inline">
+
+                <input class="form-control" type="text" name="nome" id="" placeholder="Nome da categoria">
+
+                <div class='modal-footer'>
+                    <button type="submit" class='btn btn-primary'>Guardar</button>
+                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Cancelar</button>
+                </div>
+            </form>
+
+            </div>
+        </div>
+</div>
+<!--end Confirnacao de delete -->
+
 
     <form action="{{route('produto.add')}}" method="post" class="form">
 
@@ -38,7 +64,8 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="timesheetinput5">Categoria</label>
+                    <label for="timesheetinput5">Categoria | Categoria do produto não consta na lista?
+                        <button type="button" data-target="#category" data-toggle="modal" class="btn btn-primary"> <i class="icon-plus"></i> Add Categoria</button></label>
                     <div class="position-relative has-icon-left">
 
                         <select class="form-control" required value="{{old('id_categoria')}}" name="id_categoria" id="">
@@ -83,11 +110,11 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="validade">Data de validade</label>
+                    <label for="validade">Marca</label>
                     <div class="position-relative has-icon-left">
-                        <input type="date" id="validade" class="form-control" required value="{{old('validade')}}" name="validade">
+                        <input type="text" id="validade" class="form-control" required value="{{old('marca')}}" name="marca">
                         <div class="form-control-position">
-                            <i class="icon-clock5"></i>
+                            <i class="icon-brand"></i>
                         </div>
                     </div>
                 </div>

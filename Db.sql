@@ -107,3 +107,19 @@ constraint fk_itensvenda_venda foreign key(id_venda) references venda(id) ON DEL
 );
 
 /*end Tabela encomenda*/
+
+
+
+/********** Trigger de entradas e PRodutos*/
+
+Delimiter;; 
+
+create trigger entrada_produto 
+	after insert on entrada 
+	for each row
+	begin
+	update produto set quantidade = quantidade + new.quantidade where produto.id = new.id_produto;
+	end;
+Delimiter;
+
+/********** end Trigger de entradas e PRodutos*/

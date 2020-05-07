@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use Illuminate\Support\Facades\Validator;
 
 class ProdutoController extends Controller
 {
@@ -19,12 +20,13 @@ class ProdutoController extends Controller
     public function __construct(Produto $prod)
     {
         $this->produto = $prod;
+        //$this->middleware('auth');
     }
 
     public function index(Produto $prod)
     {
         //
-        $produtos = $prod->all();
+        $produtos = $prod->Paginate(5);
 
         return view('Produto', compact('produtos'));
     }
@@ -81,14 +83,29 @@ class ProdutoController extends Controller
             return view('produto.cadastro');
         }*/
 
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required|min:6|max:255',
+            'preco' => 'required|min:3',
+        ]);
 
-        $isinserted = $this->produto->create($dados);
+        if($validator->fails()){
 
-        if($isinserted){
-           return redirect(route('admin.produto'));
+            return redirect(route('produto.create'))
+            ->withErrors($validator)
+            ->withInput();;
+
         }else{
-           return redirect(route('produto.create'));
+
+            $isinserted= $this->produto->create($dados);
+
+            if($isinserted){
+            return redirect(route('admin.produto'));
+            }else{
+            return redirect(route('produto.create'));
+            }
         }
+
+
 
     }
 
@@ -114,7 +131,9 @@ class ProdutoController extends Controller
     public function edit($id)
     {
         $produtos = $this->produto->find($id);
-        return view('produto.editar', compact('produtos'));
+        $categoria = Categoria::all();
+
+        return view('produto.editar', compact('produtos', 'categoria'));
     }
 
     /**
@@ -126,7 +145,26 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dados = $request->except('_token');
+
+
+
+        /*$isvalid = $this->validate($dados, $this->produto->regras);
+
+        if($isvalid){
+            return view('produto.cadastro');
+        }else{
+            return view('produto.cadastro');
+        }*/
+
+        $produto = $this->produto->find($id);
+        $isUpdated = $produto->update($dados);
+
+        if($isUpdated){
+           return redirect(route('admin.produto'));
+        }else{
+           return redirect(route('admin.produto'));
+        }
     }
 
     /**
@@ -137,6 +175,26 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produto = $this->produto->find($id);
+        $isdeleted = $produto->delete($id);
+
+        if($isdeleted){
+           return redirect(route('admin.produto'));
+        }else{
+           return redirect(route('admin.produto'));
+        }
+    }
+
+    public function create_cat(Request $request){
+
+        $dados = $request->all();
+
+        $isinserted= Categoria::create($dados);
+
+        if($isinserted){
+           return redirect(route('produto.create'));
+        }else{
+           return redirect(route('produto.create'));
+        }
     }
 }

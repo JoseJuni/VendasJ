@@ -1,5 +1,7 @@
 @extends('templates.page')
 
+@section('title', 'Produto')
+
 @section('header')
 
 <h3>Adicionar Produto</h3>
@@ -32,6 +34,8 @@
 
     @if(isset($produtos) && count($produtos) > 0)
 
+
+
     <h3>Lista de Produtos</h3>
 
 
@@ -43,7 +47,7 @@
             <th class="col">Quantidade</th>
             <th class="col">Preco</th>
             <th class="col">Descricao</th>
-            <th class="col">Validade (y-m-d)</th>
+            <th class="col">Marca</th>
             <th class="col">Accoes</th>
 
         </tr>
@@ -52,16 +56,40 @@
     <tbody class="table-striped table-bordered">
         @foreach ($produtos as $item)
 
+            <!-- Confirnacao de delete -->
+            <div class='modal fade' id='pr{{$item->id}}' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                <div class='modal-dialog' role='form'>
+                <div class='modal-content modal-body'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Remoção</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>
+                <!--Corpo  -->
+
+                <div class='modal-body'>
+                    <p>Deseja remover o produto {{$item->nome}}</p>
+                </div>
+                    <div class='modal-footer'>
+                    <a class='btn btn-primary' href="{{route('produto.destroy', $item->id)}}">Sim</a>
+                    <button type='button' class='btn btn-danger' data-dismiss='modal'>Nao</button>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        <!--end Confirnacao de delete -->
+
         <tr>
             <td>{{ $item->id}}</td>
             <td>{{ $item->nome}}</td>
             <td>{{ $item->quantidade}}</td>
             <td>{{ $item->preco}}</td>
             <td>{{ $item->descricao}}</td>
-            <td>{{ $item->validade}}</td>
+            <td>{{ $item->marca}}</td>
             <td >
-                <a href="#" class="nav-item"><i class="icon-edit "></i></a>
-                <a href="#" class="nav-item"><i class="icon-trash"></i></a>
+                <a href="{{route('produto.edit', $item->id)}}" class="nav-item"><i class="icon-edit "></i></a>
+            <a href="#" data-toggle='modal' data-target="#pr{{$item->id}}" class="nav-item"><i class="icon-trash"></i></a>
 
             </td>
 
@@ -80,3 +108,4 @@
     @endif
 
 @endsection('content')
+

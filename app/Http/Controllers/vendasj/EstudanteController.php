@@ -63,10 +63,10 @@ class EstudanteController extends Controller
         //
         $found = response()->json(Estudante::find($id), 200);
 
-        if($found){
+        if(count($found) > 0){
             return response()->json(Estudante::find($id), 200);
         }else{
-            return response()->json("Not found", 200);
+            return response()->json("Not found");
         }
     }
 
